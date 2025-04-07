@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page 2</title>
+    <style>
+        body {
+          background-color: black;
+          color: #00FF00;
+          font-family: 'Courier New', monospace;
+          font-size: 18px;
+          padding: 20px;
+          overflow: hidden;
+        }
+        #output {
+          white-space: pre-wrap;
+          min-height: 90vh;
+        }
+        .red-alert {
+          color: red;
+          font-weight: bold;
+          animation: blink 0.8s infinite;
+        }
+    
+        @keyframes blink {
+          0% { opacity: 1; }
+          50% { opacity: 0.2; }
+          100% { opacity: 1; }
+        }
+      </style>
+    </head>
+    <body>
+      <div id="output"></div>
+    
+      <script>
+        const text = `
+    [ SYSTEM ALERT ] 
+    Unauthorized Access Detected...
+    
+    Tracking source...
+    Fetching device data...
+    IP Address: 192.168.0.45
+    MAC Address: 78:4f:43:9d:e0:11
+    Location: Accessing GPS...
+    "Initializing backdoor.exe...",
+    "Connecting to remote server...",
+    "Downloading user credentials...",
+    "Deleting system32 folder...",
+    "Uploading all files to darkweb...""
+    
+    > Encryption Key Found.
+    > Injecting Malware...
+    > Locking all files...
+    > Sending data to remote server...
+    
+    *** CRITICAL ERROR ***
+    *** SYSTEM BREACH INITIATED ***
+    
+    `;
+    
+        let i = 0;
+        const output = document.getElementById("output");
+    
+        function typeWriter() {
+          if (i < text.length) {
+            output.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 45);
+          } else {
+            showFinalWarning();
+          }
+        }
+    
+        function showFinalWarning() {
+          const warning = document.createElement("div");
+          warning.classList.add("red-alert");
+          warning.innerText = "⚠️ SYSTEM LOCKED ⚠️\nDO NOT CLOSE THIS WINDOW.\n⚠️ SYSTEM ALERT: Suspicious activity detected.All files are being encrypted...";
+          output.appendChild(warning);
+        }
+    
+        window.onload = typeWriter;
+      </script>
+</body>
+</html>
